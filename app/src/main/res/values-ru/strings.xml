@@ -8,4 +8,5 @@
         <string name="back">Назад</string>
         <string name="no_such_word">Нету такого слова</string>
         <string name="succesful_passed">Вы прошли тест без ошибок.</string>
+        <string name="you_have_done_mistakes">Вы не знайте следуйщие слова:</string>
 </resources>

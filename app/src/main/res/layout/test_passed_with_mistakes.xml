@@ -3,7 +3,7 @@
     android:layout_width="match_parent" android:layout_height="match_parent">
     <TextView
         android:layout_marginTop="25dp"
-        android:text="You are a disapointment"
+        android:text="@string/you_have_done_mistakes"
         android:gravity="center"
         android:layout_width="match_parent"
         android:id="@+id/message"

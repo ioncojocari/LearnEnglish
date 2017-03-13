@@ -8,4 +8,5 @@
         <string name="back">Înapoi</string>
         <string name="no_such_word">Nu-i astfel de cuvânt</string>
         <string name="succesful_passed">A-ți trecut test fară greșeli.</string>
+        <string name="you_have_done_mistakes">A-ți greșit următoarele cuvinte:</string>
 </resources>
