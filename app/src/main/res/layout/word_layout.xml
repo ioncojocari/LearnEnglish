@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar"/>
+    <Button
+
+        android:onClick="playMusic"
+        style="@style/pronunciationButton"
+        android:background="@drawable/usa_flag"
+
+        android:layout_marginEnd="35dp"
+        android:id="@+id/usPronunciationButton"
+        android:layout_alignBaseline="@+id/ukPronunciationButton"
+        android:layout_alignBottom="@+id/ukPronunciationButton"
+        android:layout_alignParentEnd="true"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:onClick="playMusic"
+        style="@style/pronunciationButton"
+        android:background="@drawable/uk_flag"
+
+        android:layout_marginStart="35dp"
+        android:layout_marginBottom="35dp"
+        android:id="@+id/ukPronunciationButton"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:background="@drawable/arrow_right"
+        android:id="@+id/goToNextWord"
+        android:layout_toRightOf="@+id/usPronunciationButton"
+        android:layout_centerVertical="true"
+
+        android:layout_marginLeft="-60dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp" />
+    <Button
+        android:background="@drawable/arrow_left"
+        android:id="@+id/goToPreviousWord"
+
+        android:layout_marginRight="-60dp"
+        android:layout_toLeftOf="@+id/ukPronunciationButton"
+        android:layout_centerVertical="true"
+
+        android:layout_marginLeft="-60dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp" />
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:id="@+id/wordTextView"
+        android:textSize="@dimen/word_text_size"
+        android:padding="15dp"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="100dp"
+
+        android:layout_alignParentTop="true"
+        android:layout_alignEnd="@+id/usPronunciationButton"
+        android:layout_alignStart="@+id/ukPronunciationButton" />
+    <RelativeLayout
+        android:layout_below="@+id/wordTextView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/ukPronunciationButton"
+        android:layout_marginBottom="15dp"
+        >
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true">
+            <TextView
+                android:textSize="@dimen/translation_text_size"
+                android:gravity="center"
+                android:id="@+id/translationTextView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </ScrollView>
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

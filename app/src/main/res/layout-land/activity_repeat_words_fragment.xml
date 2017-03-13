@@ -1,0 +1,86 @@
+
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+>
+    <include
+
+        layout="@layout/toolbar"/>
+
+
+
+
+            <LinearLayout
+
+
+                android:layout_below="@+id/wordTextView"
+                android:layout_marginBottom="40dp"
+                android:orientation="horizontal"
+                android:weightSum="3"
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:gravity="center"
+                    android:background="@color/cardview_dark_background"
+                    android:textSize="25sp"
+                    android:clickable="true"
+                    android:onClick="answer"
+                    android:id="@+id/firstPosition"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent" />
+
+                <TextView
+                    android:gravity="center"
+                    android:background="@color/colorAccent"
+
+
+                android:textSize="25sp"
+                android:clickable="true"
+                android:onClick="answer"
+                android:id="@+id/secondPosition"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                 />
+
+                <TextView
+
+                    android:background="@color/colorPrimary"
+                    android:gravity="center"
+                    android:textSize="25sp"
+                    android:clickable="true"
+                    android:onClick="answer"
+                    android:id="@+id/thirdPosition"
+
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent" />
+            </LinearLayout>
+            
+
+
+
+
+    <TextView
+        android:layout_marginBottom="20dp"
+        android:layout_gravity="center_horizontal"
+
+        android:layout_centerHorizontal="true"
+        android:text="word"
+        android:layout_marginTop="70dp"
+        android:id="@+id/wordTextView"
+        android:textSize="@dimen/word_text_size"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        />
+
+
+</RelativeLayout>

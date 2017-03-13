@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_repeat_words"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context="com.example.mrc.learnenglish.Search"
+
+    >
+
+
+    <!--<Button-->
+            <!--android:layout_marginTop="25dp"-->
+            <!--android:layout_alignParentEnd="true"-->
+
+
+        <!--android:onClick="search"-->
+            <!--android:background="@drawable/ic_search_black_24dp"-->
+            <!--android:layout_width="50dp"-->
+            <!--android:layout_height="50dp"-->
+            <!--android:id="@+id/search_button"-->
+            <!--android:layout_marginRight="25dp"-->
+            <!--/>-->
+
+    <EditText
+
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:textSize="25sp"
+        android:inputType="textAutoCorrect"
+
+        android:hint="Word"
+
+
+        android:ems="12"
+        android:id="@+id/editText"
+            android:layout_margin="25dp"
+
+        android:layout_alignParentStart="true" />
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycle_view"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/editText"
+        android:layout_height="match_parent">
+
+    </android.support.v7.widget.RecyclerView>
+    <TextView
+        android:visibility="invisible"
+        android:layout_centerInParent="true"
+        android:text="@string/no_such_word"
+        android:id="@+id/no_such_word_text_view"
+        android:padding="20dp"
+        android:textSize="25sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+
+</RelativeLayout>

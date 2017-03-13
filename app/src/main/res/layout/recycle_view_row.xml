@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:paddingTop="5dp"
+    android:paddingBottom="5dp"
+    android:addStatesFromChildren="true"
+    android:background="@drawable/row_bg"
+    android:layout_height="wrap_content"
+
+
+    >
+    <RelativeLayout
+        android:addStatesFromChildren="true"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <Button
+
+        android:id="@+id/rowTextView"
+        android:onClick="toNext"
+        android:background="@null"
+        android:textSize="25dp"
+
+        android:layout_toLeftOf="@+id/testButton"
+        android:textAllCaps="false"
+        android:layout_width="match_parent"
+
+        android:layout_height="match_parent" />
+
+    <Button
+
+        android:padding="5dp"
+        android:textAlignment="@+id/rowTextView"
+        android:background="@drawable/ic_assignment_late_black_24dp"
+        android:layout_height="42dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentEnd="true"
+        android:layout_width="42dp"
+
+        android:onClick="toTest"
+        android:id="@+id/testButton" />
+    </RelativeLayout>
+
+</LinearLayout>

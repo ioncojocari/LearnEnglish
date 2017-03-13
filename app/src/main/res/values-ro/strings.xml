@@ -1,0 +1,11 @@
+<resources>
+        <string name="hello">Bună</string>
+        <string name="top_words">Top Cuvinte</string>
+        <string name ="learn_words">Învăța cuvinte</string>
+        <string name="test">Test</string>
+        <string name="congratulation">Felicitări,a-ți invațat toate cuvintele.Doriți să le repetați din nou?</string>
+        <string name="yes">Da</string>
+        <string name="back">Înapoi</string>
+        <string name="no_such_word">Nu-i astfel de cuvânt</string>
+        <string name="succesful_passed">A-ți trecut test fară greșeli.</string>
+</resources>

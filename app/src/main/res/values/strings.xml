@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">LearnEnglish</string>
+    <string name="choose_language_uk">Українська мова</string>
+    <string name="choose_language_ru">Русский язык</string>
+    <string name="choose_language_ro">Limba română</string>
+    <string name="db_name">data</string>
+    <string name="hello">hello</string>
+    <string name="top_words">Top Words</string>
+    <string name="settings">Settings</string>
+    <string name="test">Test</string>
+    <string name="choose_language">Choose language</string>
+    <string name="title_activity_search">Search</string>
+        <string name="wait_message">Please ,wait a few seconds.
+            \nVa rog ,așteptați cîteva secunde.
+            \nПожалуйста , подождите несколько секунд.
+            \nБудь ласка, почекайте кілька секунд.
+        </string>
+    <!--<string name="learn_words">Learn words</string>-->
+</resources>

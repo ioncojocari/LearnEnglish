@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:background="#F5F5F5"
+    tools:context="com.example.mrc.learnenglish.MainActivity">
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar"/>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginTop="55dp"
+        android:layout_below="@+id/toolbar"
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
+
+    <Button
+
+
+        android:onClick="goToTopWords"
+        android:text="@string/top_words"
+        android:layout_width="match_parent"
+        android:textSize="22sp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textAllCaps="false"
+        android:background="@color/white"
+
+        android:layout_marginLeft="60dp"
+        android:layout_marginRight="60dp"
+        android:layout_marginTop="60dp"
+        android:id="@+id/topWordsButton" />
+    <Button
+
+        android:textSize="22sp"
+        android:id="@+id/learnWordsButton"
+        android:text="@string/learn_words"
+        android:layout_margin="60dp"
+         android:onClick="goToLearnWords"
+        android:layout_centerHorizontal="true"
+        android:textAllCaps="false"
+        android:background="@color/white"
+        android:layout_below="@+id/topWordsButton"
+
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:layout_height="0dp" />
+    <!--<Button android:id="@+id/clearData"-->
+        <!--android:text="clearData"-->
+        <!--android:onClick="clearData"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:textAllCaps="false"-->
+        <!--android:background="@color/white"-->
+        <!--android:layout_below="@+id/learnWordsButton"-->
+        <!--android:layout_marginTop="50dp"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--/>-->
+    <!--<Button android:id="@+id/clearAllData"-->
+    <!--android:text="clearAllData"-->
+    <!--android:onClick="clearAllData"-->
+    <!--android:layout_centerHorizontal="true"-->
+    <!--android:textAllCaps="false"-->
+    <!--android:background="@color/white"-->
+    <!--android:layout_below="@+id/clearData"-->
+    <!--android:layout_marginTop="50dp"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--/>-->
+
+    <!--<Button android:id="@+id/learnAllWordsButton"-->
+        <!--android:text="learn All words"-->
+        <!--android:onClick="learnAllWords"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:textAllCaps="false"-->
+        <!--android:background="@color/white"-->
+        <!--android:layout_below="@+id/clearAllData"-->
+        <!--android:layout_marginTop="20dp"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--/>-->
+    </LinearLayout>
+
+</RelativeLayout>

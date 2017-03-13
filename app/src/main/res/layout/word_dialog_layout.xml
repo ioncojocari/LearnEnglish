@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+
+
+        style="@style/pronunciationButton"
+        android:background="@drawable/usa_flag"
+
+        android:layout_marginRight="10dp"
+
+        android:id="@+id/usPronunciationButton"
+
+        android:layout_below="@+id/relativeLayout"
+        android:layout_alignParentEnd="true"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:layout_marginLeft="10dp"
+
+        style="@style/pronunciationButton"
+        android:background="@drawable/uk_flag"
+        android:layout_below="@+id/relativeLayout"
+
+        android:id="@+id/ukPronunciationButton"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/ok_button"
+        android:layout_alignParentStart="true" />
+
+
+    <TextView
+        android:text="1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:id="@+id/wordTextView"
+        android:textSize="@dimen/word_text_size"
+        android:padding="15dp"
+        android:gravity="center_horizontal"
+
+
+        android:layout_alignParentTop="true"
+        android:layout_alignEnd="@+id/usPronunciationButton"
+        android:layout_alignStart="@+id/ukPronunciationButton" />
+    <RelativeLayout
+        android:layout_below="@+id/wordTextView"
+        android:layout_width="match_parent"
+        android:layout_height="240dp"
+        android:id="@+id/relativeLayout"
+
+        android:layout_margin="10dp"
+        >
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true">
+            <TextView
+                android:textSize="@dimen/translation_text_size"
+                android:gravity="center"
+                android:text="1"
+                android:id="@+id/translationTextView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </ScrollView>
+
+    </RelativeLayout>
+
+    <Button
+        android:textSize="25sp"
+        android:text="OK"
+        android:layout_margin="10dp"
+        android:background="#55888888"
+        android:id="@+id/ok_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/usPronunciationButton"
+        android:layout_alignParentStart="true" />
+
+
+</RelativeLayout>

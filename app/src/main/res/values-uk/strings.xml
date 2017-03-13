@@ -1,0 +1,11 @@
+<resources>
+    <string name="hello">Вітання</string>
+    <string name="top_words">Топ Cлів</string>
+    <string name ="learn_words">Вивчити слова</string>
+    <string name="test">Тест</string>
+    <string name="congratulation">Вітаю, ви вивчили всі слова.Хоче повторити?</string>
+    <string name="yes">Так</string>
+    <string name="back">Назад</string>
+    <string name="no_such_word">Немає такого слово</string>
+    <string name="succesful_passed">Ви пройшли тест без помилок.</string>
+</resources>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar"/>
+    <Button
+
+        android:onClick="playMusic"
+        style="@style/pronunciationButton"
+        android:background="@drawable/usa_flag"
+
+        android:layout_marginEnd="35dp"
+        android:id="@+id/usPronunciationButton"
+
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="35dp"
+        android:layout_alignParentEnd="true"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:onClick="playMusic"
+        style="@style/pronunciationButton"
+        android:background="@drawable/uk_flag"
+
+       android:layout_alignParentBottom="true"
+       android:layout_alignParentLeft="true"
+        android:layout_marginLeft="35dp"
+        android:layout_toEndOf="@+id/usPronunciationButton"
+        android:layout_marginBottom="35dp"
+
+        android:id="@+id/ukPronunciationButton"
+        android:layout_height="wrap_content"
+        />
+    <Button
+        android:background="@drawable/arrow_right"
+        android:id="@+id/goToNextWord"
+        android:layout_toRightOf="@+id/usPronunciationButton"
+        android:layout_centerVertical="true"
+
+        android:layout_marginLeft="-60dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp" />
+    <Button
+        android:background="@drawable/arrow_left"
+        android:id="@+id/goToPreviousWord"
+
+        android:layout_marginRight="-60dp"
+        android:layout_toLeftOf="@+id/ukPronunciationButton"
+        android:layout_centerVertical="true"
+
+        android:layout_marginLeft="-60dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp" />
+
+
+    <TextView
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/wordTextView"
+        android:textSize="@dimen/word_text_size"
+        android:text="word"
+
+
+
+        android:gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="20dp"
+            android:layout_below="@+id/toolbar"
+
+         />
+
+        <ScrollView
+            android:layout_below="@+id/wordTextView"
+            android:layout_width="match_parent"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="35dp"
+
+            android:layout_height="match_parent"
+            android:id="@+id/scrollView"
+            android:layout_marginBottom="35dp"
+            >
+            <TextView
+
+                android:textSize="@dimen/translation_text_size"
+                android:gravity="center"
+                android:text="wtf fuck\nyou bitch"
+                android:id="@+id/translationTextView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </ScrollView>
+
+
+
+
+</RelativeLayout>
