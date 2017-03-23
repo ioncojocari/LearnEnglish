@@ -33,8 +33,6 @@ public class Top2LevelWordsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_top_2_level_words);
         Intent intent=getIntent();
         Bundle bundle=intent.getExtras();
-        Log.v("tag","Top20 started");
-
         int from=1;
         int to=1;
         if(        bundle.containsKey(FROMKEY)){
@@ -43,18 +41,13 @@ public class Top2LevelWordsActivity extends AppCompatActivity {
         if(        bundle.containsKey(TOKEY)){
             to=bundle.getInt(TOKEY);
         }
-
         setContentView(R.layout.activity_top_2_level_words);
-
         m20RecyclerView= (GridView) findViewById(R.id.top20WordsRyclerView);
         Resources resources=getResources();
-
         AdapterView2LevelGrid adapterView2Level =new AdapterView2LevelGrid(this,resources,from,to);
-
-
         m20RecyclerView.setAdapter(adapterView2Level);
-
     }
+
     public void toTest(View view){
         String text="";
         for(int i=0;i<((RelativeLayout)(view.getParent())).getChildCount();i++) {
@@ -63,44 +56,30 @@ public class Top2LevelWordsActivity extends AppCompatActivity {
                 text=txt;
             }
         }
-
         text=text.replace("..","-");
-        Log.v("trt","initial text of button:"+text);
         String[] strs=text.split(Pattern.quote("-"));
-
         String strFrom=strs[0];
-
         String strTo=strs[1];
         Intent intent=new Intent(this,LearnWordsActivity.class);
         int from=Integer.parseInt(strFrom);
         int to=Integer.parseInt(strTo);
-
-
         intent.putExtra(LearnWordsActivity.FROMPOSITION,from);
         intent.putExtra(LearnWordsActivity.TOPOSITION,to);
         startActivity(intent);
     }
     public void toNext(View view){
-//
         int from=1;
         int to;
         String fullStr=((Button)view).getText().toString();
-
         fullStr=fullStr.replace("..","-");
-
         String[] strs=fullStr.split(Pattern.quote("-"));
-
         String strFrom=strs[0];
-
         String strTo=strs[1];
-
         from=Integer.parseInt(strFrom);
         to=Integer.parseInt(strTo);
         Intent intent=new Intent(this,Top1LevelWordsActivity.class);
         intent.putExtra(Top1LevelWordsActivity.FROMKEY,from);
         intent.putExtra(Top1LevelWordsActivity.TOKEY,to);
         startActivity(intent);
-
-
     }
 }

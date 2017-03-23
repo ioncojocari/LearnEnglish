@@ -46,16 +46,10 @@ public class LearnNewWordsActivity extends AppCompatActivity implements View.OnC
                 lastNr--;
                 remains++;
             }
-
         }
-
         setContentView(R.layout.activity_learn_new_words);
-
-
         toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         nextButton= (Button) findViewById(R.id.goToNextWord);
         previousButton= (Button) findViewById(R.id.goToPreviousWord);
@@ -63,36 +57,25 @@ public class LearnNewWordsActivity extends AppCompatActivity implements View.OnC
         nextButton.setOnClickListener(this);
         wordTextView= (TextView) findViewById(R.id.wordTextView);
         translationTextView= (TextView) findViewById(R.id.translationTextView);
-
         showNextWord();
-
     }
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.learn_words_toolbar_menu, menu);
-
-
-
-
-        // Configure the search info and add any event listeners...
-
         return super.onCreateOptionsMenu(menu);
     }
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case R.id.action_settings :showSettings();
                 break;
-
         }
         return super.onOptionsItemSelected(item);
-
     }
+
     public void showSettings(){
         Intent intent=new Intent(this,ChooseLanguage.class);
-
         startActivity(intent);
     }
 
-    @Override
     public void onBackPressed() {
         LearnWordsActivity.finishActivity=true;
         finish();
@@ -103,65 +86,40 @@ public class LearnNewWordsActivity extends AppCompatActivity implements View.OnC
     private void showNextWord( ){
         lastNr++;
         remains--;
-
-
-
-
-
-            Realm realm = Realm.getDefaultInstance();
-            realm.beginTransaction();
-
-
-            if (realm.where(UnlearnedWord.class).equalTo("id", Data.getData().get(lastNr).getId()).findFirst() != null) {
-                Log.v("txt", "this word is  unlearned");
-
-
-            } else {
-                if(lastNr>0) {
+        Realm realm = Realm.getDefaultInstance();
+        realm.beginTransaction();
+        if (realm.where(UnlearnedWord.class).equalTo("id", Data.getData().get(lastNr).getId()).findFirst() == null) {
+            if(lastNr>0) {
                     UnlearnedWord unlearnedWord = new UnlearnedWord();
                     unlearnedWord.setId(Data.getData().get(lastNr-1).getId());
                     if(realm.where(UnlearnedWord.class).equalTo("id",Data.getData().get(lastNr-1).getId()).findAll().size()==0) {
                         realm.copyToRealm(unlearnedWord);
                     }
-
-                }
             }
-            ;
-
+        }
             realm.commitTransaction();
             showWord(lastNr);
         if(remains==-1) {
             remains = 0;
             finish();
         }
-
     }
 
     private void showPreviousWord( ){
         lastNr--;
         remains++;
         showWord(lastNr);
-
     }
 
     @Override
     protected void onResume() {
-        Log.v("trt","onResume Learn New Words");
         if(MainActivity.languageChanged) {
-
-
             showWord(lastNr);
         }
         super.onResume();
     }
 
     private void showWord(int nr){
-
-//        if(remains<=0){
-//            nextButton.setVisibility(View.INVISIBLE);
-//        }else{
-//            nextButton.setVisibility(View.VISIBLE);
-//        }
         if(remains+1>=amountOfNewWords){
             previousButton.setVisibility(View.INVISIBLE);
         }else{
@@ -199,7 +157,6 @@ public class LearnNewWordsActivity extends AppCompatActivity implements View.OnC
         Button ukButton=(Button)findViewById(R.id.ukPronunciationButton);
         Button usButton=(Button)findViewById(R.id.usPronunciationButton);
         if(ukPronExist==false){
-
             ukButton.setVisibility(View.INVISIBLE);
         }else{
             ukButton.setVisibility(View.VISIBLE);

@@ -52,6 +52,8 @@ public class ShowMessageDialog extends DialogFragment implements View.OnClickLis
     public final static String RESULTSKEY="RESULTS";
     public  ArrayList<String > wrongWords=null;
     public final static String FAILEDKEY="FAILED";
+    public final static int ANSWERWIDTHDP=240;
+    public final static int ANSWERHEIGHTDP=240;
     private boolean failed=false;
     private  Word word;
     private View layout;
@@ -60,15 +62,6 @@ public class ShowMessageDialog extends DialogFragment implements View.OnClickLis
 
     private View secondLayout;
      AlertDialog alert;
-
-
-
-    @Nullable
-    @Override
-//    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-//
-//        return super.onCreateView(inflater, container, savedInstanceState);
-//    }
 
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 
@@ -156,10 +149,6 @@ public class ShowMessageDialog extends DialogFragment implements View.OnClickLis
                 public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event) {
                     if ((keyCode ==  android.view.KeyEvent.KEYCODE_BACK))
                     {
-                        Log.v("trt","From Word On back Pressed");
-
-
-
                         alert.hide();
 
                         return true; // pretend we've processed it
@@ -203,34 +192,17 @@ public class ShowMessageDialog extends DialogFragment implements View.OnClickLis
                 recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()) );
                 key=new DialogInterface.OnKeyListener()
                 {
-
-
-
                     public boolean onKey(android.content.DialogInterface dialog, int keyCode,android.view.KeyEvent event) {
-
 
                         if ((keyCode ==  android.view.KeyEvent.KEYCODE_BACK))
                         {
                             FragmentManager fragmentManager=getFragmentManager();
                             Fragment dialogFragment=fragmentManager.findFragmentByTag("ShowWordDialog");
                             if(dialogFragment!=null ){
-                                Log.v("trt","dialogFragment exists");
                                 fragmentManager.beginTransaction().remove(fragmentManager.findFragmentByTag("ShowWordDialog")).commit();
                             }else{
-
                                     LearnWordsActivity.finishActivity();
-
                             }
-
-                            Log.v("trt","From mistakes On back Pressed");
-
-//                            if(wrongWords!=null   ) {
-//                                Log.v("trt","azazazaaz i fucked you little pig");
-//                                LearnWordsActivity.finishActivity();
-//                            }else{
-//                                Log.v("trt","It is not focused");
-//                            }
-
 
                             return true; // pretend we've processed it
                         }
@@ -239,30 +211,17 @@ public class ShowMessageDialog extends DialogFragment implements View.OnClickLis
                     }
                 };
                 dialog.setOnKeyListener(   key);
-
-
-
             }
             Button button= (Button) layout.findViewById(R.id.ok_button);
             button.setOnClickListener(this);
-           dialog.setView(layout);
-
-//            if(wrongWords.size()==0){
-//
-//            }else{
-//
-//            }
+            dialog.setView(layout);
         }
-
-
 
          alert = dialog.create();
 
         if(correct || wrong ) {
 
             alert.show();
-
-// Hide after some seconds
 
         final Handler handler  = new Handler();
         final Runnable runnable = new Runnable() {
@@ -283,10 +242,7 @@ public class ShowMessageDialog extends DialogFragment implements View.OnClickLis
                 handler.removeCallbacks(runnable);
             }
         });
-
                 handler.postDelayed(runnable, 1000);
-
-
         }
 
         else if(word!=null && failed){
@@ -314,47 +270,10 @@ public class ShowMessageDialog extends DialogFragment implements View.OnClickLis
             handler.postDelayed(runnable, 1000);
         }
         else if(wrongWords!=null){
-
                 alert.show();
-
         }
 
-
-
-
-
-
         return alert;
-    }
-
-    @Override
-    public void onPause() {
-        Log.v("trt","onPause ShoWMessageDIalog");
-        super.onPause();
-
-
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-
-    }
-
-    @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
-    }
-
-    public void onDestroy() {
-//        if(wrongWords!=null){
-//            LearnWordsActivity.finishActivity();
-//        }
-
-
-
-        super.onDestroy();
     }
 
     public int getDp(int nr){
@@ -365,7 +284,7 @@ public class ShowMessageDialog extends DialogFragment implements View.OnClickLis
     public void onStart() {
         super.onStart();
         if(correct || wrong || (word!=null && failed&& getDialog()!=null )) {
-            getDialog().getWindow().setLayout(getDp(240), getDp(240));
+            getDialog().getWindow().setLayout(getDp(ANSWERWIDTHDP), getDp(ANSWERHEIGHTDP));
             getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         }
     }
@@ -373,7 +292,7 @@ public class ShowMessageDialog extends DialogFragment implements View.OnClickLis
     @Override
     public void onClick(View v) {
         if(v.getId()==R.id.ok_button){
-            Log.v("trt","okButton");
+
             if(wrongWords!=null){
                 LearnWordsActivity.finishActivity();
             }

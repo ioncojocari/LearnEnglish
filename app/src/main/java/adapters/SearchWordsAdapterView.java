@@ -18,43 +18,30 @@ import java.util.ArrayList;
 
 public class SearchWordsAdapterView extends RecyclerView.Adapter<SearchWordsAdapterView.ViewHolder> {
     private LayoutInflater inflater;
-
     public ArrayList<String > items=null;
-
-
-
     public  SearchWordsAdapterView(Context context,ArrayList<String> words){
         inflater=LayoutInflater.from(context);
-
         items=words;
     }
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v= inflater.inflate(R.layout.recycle_word_view_row,parent,false);
         ViewHolder holder=new SearchWordsAdapterView.ViewHolder(v);
         return holder;
-
     }
 
-    @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         holder.button.setText(items.get(position));
     }
 
-    @Override
     public int getItemCount() {
         return items.size();
     }
 
-
-
     public class ViewHolder extends RecyclerView.ViewHolder {
         Button button;
         public ViewHolder(View itemView) {
-
             super(itemView);
             button= (Button) itemView.findViewById(R.id.rowTextView);
-
-
         }
     }
 

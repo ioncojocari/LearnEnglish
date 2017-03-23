@@ -65,20 +65,15 @@ public class UpdateDataTask extends AsyncTask<String,String,String> {
             }
         }
         realm.copyToRealm(update);
-
-
         realm.commitTransaction();
     }
 
     protected void onPostExecute(String s) {
         Data.update();
-        Log.v("trt","update was made hahaha haha h fycj ");
         updateIsntNeeded=true;
     }
 
     protected String doInBackground(String... params) {
-
-        Log.v("trt","do in background start");
         int version;
         RequestPackage requestPackage=new RequestPackage();
         requestPackage.setUri(updateUri);
@@ -86,7 +81,7 @@ public class UpdateDataTask extends AsyncTask<String,String,String> {
 
         Realm realm=Realm.getDefaultInstance();
         while (realm.isInTransaction()){
-            Log.v("trt","realm is in transaction");
+
             try {
                 Thread.sleep(200);
             } catch (InterruptedException e) {
@@ -100,21 +95,15 @@ public class UpdateDataTask extends AsyncTask<String,String,String> {
         }else {
             version = realm.where(Updates.class).findAllSorted("date", Sort.DESCENDING).first().getVersion();
         }
-        Log.v("trt","real version is "+version);
-
 
         realm.commitTransaction();
         requestPackage.addParam("version",String.valueOf(version));
         String result=HttpManager.getData(requestPackage);
-        Log.v("trt","text");
-        Log.v("trt",result);
+
         if(!result.isEmpty()) {
             int updatedVersion = getVersionFromString(result);
-
             result = getDataWithoutVersion(result);
 
-
-            Log.v("trt", result);
             List<WordFromDb> words = WordJSONParser.parse(result);
             if (words.size() > 0) {
 
@@ -134,22 +123,14 @@ public class UpdateDataTask extends AsyncTask<String,String,String> {
                         addWord(words.get(i), realm);
                     }
                     if (words.get(i).update) {
-                        Log.v("trt", "updating azazaza");
                         updateWord(words.get(i), realm);
                     }
                     if (words.get(i).delete) {
-                        Log.v("trt", "deleting azazaza");
                         deleteWord(words.get(i), realm);
                     }
                 }
                 realm.commitTransaction();
-
             }
-
-            Log.v("trt", result);
-            Log.v("trt", "real version of last update is" + updatedVersion);
-
-            //after executing update there shuld be
             Updates update = new Updates();
             update.setDate(new Date());
             update.setVersion(updatedVersion);
@@ -196,13 +177,9 @@ public class UpdateDataTask extends AsyncTask<String,String,String> {
         if(wordFromDb.ukrainianTranslation!=null && !wordFromDb.ukrainianTranslation.isEmpty()){
             word.setUkrainianTranslation(wordFromDb.ukrainianTranslation);
         }
-
-
-
-            realm.copyToRealmOrUpdate(word);
-
-
+        realm.copyToRealmOrUpdate(word);
     }
+
     public void addWord(WordFromDb wordFromDb,Realm realm){
         Log.v("trt","adding new word "+wordFromDb.word);
         Word word= realm.where(Word.class).equalTo("id",wordFromDb.id).findFirst();
@@ -281,18 +258,15 @@ public class UpdateDataTask extends AsyncTask<String,String,String> {
         }else if(wordFromDb.word!=null &&
             realm.where(Word.class).equalTo("word", wordFromDb.word).findFirst()!=null) {
                 realm.where(Word.class).equalTo("word", wordFromDb.word).findFirst().deleteFromRealm();
-
             }
         }
 
     public int getVersionFromString(String string){
-
         String str="";
         int result=0;
         while (isNumber(string)){
             str+=string.substring(0,1);
             string=string.substring(1,string.length());
-
         }
         if(!str.isEmpty()) {
             result = Integer.parseInt(str);
@@ -300,9 +274,6 @@ public class UpdateDataTask extends AsyncTask<String,String,String> {
 
         return result;
     }
-
-
-
 
     public static void checkLastData(ConnectivityManager connectivityManager,Context context){
        if(!updateIsntNeeded) {
@@ -312,12 +283,12 @@ public class UpdateDataTask extends AsyncTask<String,String,String> {
         }
 
     }
-    public static void updateData(){
 
+    public static void updateData(){
             UpdateDataTask task = new UpdateDataTask();
             task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
-
     }
+
     private static class UpdateDataTaskManager extends AsyncTask<String,String,String>{
         ConnectivityManager mConnectivityManager;
         public UpdateDataTaskManager(ConnectivityManager connectivityManager){
@@ -334,11 +305,9 @@ public class UpdateDataTask extends AsyncTask<String,String,String> {
                 }
             }
             realm.beginTransaction();
-
-
             Date date = realm.where(Updates.class).maximumDate("date");
-
             realm.commitTransaction();
+
             if(date==null){
                 date=new Date(0x0);
             }
@@ -364,7 +333,6 @@ public class UpdateDataTask extends AsyncTask<String,String,String> {
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-
                 }
             }
 

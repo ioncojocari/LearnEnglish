@@ -32,21 +32,13 @@ public class ProcessDataFragment  extends Fragment {
     public static final String PROCCESS_DATA_FRAGMENT_TAG="PROCESSDATAFRAGMENTTAG";
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        // Retain this fragment across configuration changes.
         setRetainInstance(true);
-
-        // Create and execute the background task.
         mTask = new GetDataTask();
-
         mTask.execute();
     }
 
-    @Nullable
-    @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.nothing,container,false);
-
     }
 
     public  String readString(InputStream is) throws IOException {
@@ -60,47 +52,27 @@ public class ProcessDataFragment  extends Fragment {
                 s.append(buf, 0, n);
             }
             return s.toString();
-        }
-        public  String load(Context context){
-
-
+    }
+    public  String load(Context context){
             AssetManager assetManager=context.getAssets();
-
             InputStream inputStream = null;
             try {
                 inputStream = assetManager.open("words.txt");
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
-
             try {
                 return readString(inputStream);
             } catch (IOException e) {
                 e.printStackTrace();
             }
             return null;
-
     }
-
-
 
     private class GetDataTask extends AsyncTask<String,String ,List<Word>> {
 
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            Log.v("trt","startOnPreExecute");
-
-
-        }
-
         protected List<Word> doInBackground(String... params) {
             List<Word> wordList=null;
-
-
-
-
             Realm realm=Realm.getDefaultInstance();
             realm.beginTransaction();
             if(realm.where(Word.class).findAll().size()==0) {
@@ -112,11 +84,8 @@ public class ProcessDataFragment  extends Fragment {
             return wordList;
         }
 
-        @Override
         protected void onPostExecute(List<Word> words) {
-            Log.v("trt","onPostExecute");
             DecompileActivity.finishActivity();
-
         }
 
     }

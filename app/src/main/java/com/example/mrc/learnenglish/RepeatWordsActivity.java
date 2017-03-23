@@ -54,10 +54,7 @@ public class RepeatWordsActivity extends AppCompatActivity {
             }
         }
         setContentView(R.layout.activity_repeat_words);
-
-
         TestGenerator testGenerator=Word.getTestGenerator(ids[currentPos],this);
-
 
         wordTextView= (TextView) findViewById(R.id.wordTextView);
         firstPosition= (TextView) findViewById(R.id.firstPosition);
@@ -69,22 +66,13 @@ public class RepeatWordsActivity extends AppCompatActivity {
         thirdPosition.setText(testGenerator.getPosibleAnswer()[2]);
         correctAnswer=testGenerator.getCorrectAnswer();
         toolbar= (Toolbar) findViewById(R.id.toolbar);
-
         setSupportActionBar(toolbar);
-
-
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.learn_words_toolbar_menu, menu);
-
-
-
-
-        // Configure the search info and add any event listeners...
-
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -92,8 +80,6 @@ public class RepeatWordsActivity extends AppCompatActivity {
     protected void onResume() {
         if(MainActivity.languageChanged){
             TestGenerator testGenerator=Word.getTestGenerator(ids[currentPos],this);
-
-
             wordTextView= (TextView) findViewById(R.id.wordTextView);
             firstPosition= (TextView) findViewById(R.id.firstPosition);
             secondPosition= (TextView) findViewById(R.id.secondPosition);
@@ -104,7 +90,6 @@ public class RepeatWordsActivity extends AppCompatActivity {
             thirdPosition.setText(testGenerator.getPosibleAnswer()[2]);
             correctAnswer=testGenerator.getCorrectAnswer();
             toolbar= (Toolbar) findViewById(R.id.toolbar);
-
         }
         super.onResume();
     }
@@ -113,33 +98,24 @@ public class RepeatWordsActivity extends AppCompatActivity {
         switch (item.getItemId()){
             case R.id.action_settings :showSettings();
                 break;
-
         }
         return super.onOptionsItemSelected(item);
-
     }
     public void showSettings(){
         Intent intent=new Intent(this,ChooseLanguage.class);
-
         startActivity(intent);
     }
     private boolean areArrayEqual(int[] a, int[] b) {
         if (a == null) return false;
-
         if (b == null) return false;
-
         if (a.length != b.length) return false;
         for (int i = 0; i < a.length; i++) {
             int x = a[i];
             int y = b[i];
             if (x!= y) return false;
-
         }
         return true;
     }
-
-
-
     public void showNextOne(){
         ++currentPos;
 
@@ -159,7 +135,6 @@ public class RepeatWordsActivity extends AppCompatActivity {
 
         }
     }
-
     public void answer(int id){
         if(id==correctAnswer){
             correct();
@@ -167,7 +142,6 @@ public class RepeatWordsActivity extends AppCompatActivity {
             fail();
         }
     }
-
     public void answer(View v ){
         switch (v.getId()){
             case R.id.firstPosition:
@@ -198,20 +172,14 @@ public class RepeatWordsActivity extends AppCompatActivity {
         showItsCorrect();
     }
     public void showCorrectAnswer(){
-//        Toast toast = Toast.makeText(this, "you rock ", Toast.LENGTH_LONG);
-      //  toast.show();
+
         if(wordTextView!=null) {
             String wordStr=wordTextView.getText().toString();
-
             ShowMessageDialog dialogFragment = new ShowMessageDialog();
-
-
             Bundle data = new Bundle();
-//            data.putBoolean(ShowMessageDialog.CORRECTANSWERKEY,false);
             data.putString(ShowMessageDialog.WORDKEY, wordStr);
             data.putBoolean(ShowMessageDialog.FAILEDKEY, true);
             dialogFragment.setArguments(data);
-
             dialogFragment.show(getSupportFragmentManager(), "ShowWordDialog");
         }
     }
@@ -224,25 +192,15 @@ public class RepeatWordsActivity extends AppCompatActivity {
     }
 
     public void showItsCorrect(){
-
-
         ShowMessageDialog dialogFragment = new ShowMessageDialog();
-
-
         Bundle data = new Bundle();
         data.putBoolean(ShowMessageDialog.CORRECTANSWERKEY,true);
-
         dialogFragment.setArguments(data);
-
         dialogFragment.show(getSupportFragmentManager(), "ShowMessageDialog");
-        //ShowMessageDialog dialogFragment=new ShowMessageDialog();
-
     }
 
     public void fail( ){
         showCorrectAnswer();
-//       Toast toast = Toast.makeText(context, "you failed", Toast.LENGTH_LONG);
-//        toast.show();
     }
 
 

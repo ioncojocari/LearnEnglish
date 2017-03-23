@@ -19,7 +19,6 @@ public class Data {
             initiate();
         }
         return allWords;
-
     }
     public static void update(){
         Realm realm = Realm.getDefaultInstance();
@@ -32,7 +31,6 @@ public class Data {
                 allWords.add(word);
             }
         }
-
         realm.commitTransaction();
     }
     public static void initiate(){
@@ -47,7 +45,6 @@ public class Data {
                     allWords.add(word);
                 }
             }
-
             realm.commitTransaction();
         }
     }
@@ -81,35 +78,15 @@ public class Data {
         }
         return null;
     }
-//    public static int[] getIdsOfPositions(int from,int to){
-//        from--;
-//        to--;
-//        int amount=to-from+1;
-//        int[] result=new int[amount];
-//        if(to>from){
-//            int nr=0;
-//            for(int i=from;i<=to;i++){
-//                result[nr]=allWords.get(i).getId();
-//                nr++;
-//            }
-//
-//
-//        }
-//        return result;
-//    }
+
     public static ArrayList<Integer> getIdsOfPositions(int from,int to){
         from--;
         to--;
-        int amount=to-from+1;
       ArrayList<Integer> result=new ArrayList<Integer>();
         if(to>from){
-            int nr=0;
             for(int i=from;i<=to;i++){
                 result.add(allWords.get(i).getId());
-                nr++;
             }
-
-
         }
         return result;
     }

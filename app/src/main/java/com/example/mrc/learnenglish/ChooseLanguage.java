@@ -20,20 +20,16 @@ public class ChooseLanguage extends AppCompatActivity  {
 
     public void selectRussian(View view){
         LANGUAGE.saveLanguage(LANGUAGE.RUSSIAN,getApplicationContext());
-
         MainActivity.languageChanged=true;
        finish();
-
     }
     public void selectUkraine(View view){
         LANGUAGE.saveLanguage(LANGUAGE.UKRANIAN,getApplicationContext());
-
         MainActivity.languageChanged=true;
         finish();
     }
     public void selectRomain(View view){
         LANGUAGE.saveLanguage(LANGUAGE.ROMANIAN,getApplicationContext());
-
         MainActivity.languageChanged=true;
         finish();
     }
@@ -48,11 +44,9 @@ public class ChooseLanguage extends AppCompatActivity  {
             languageToLoad = "ro";
         }
         else
-
         {
             return;
         }
-
         Locale locale = new Locale(languageToLoad);
         Locale.setDefault(locale);
         Configuration config = new Configuration();

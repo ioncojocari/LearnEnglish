@@ -29,8 +29,6 @@ public class Top1LevelWordsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_top_1_level_words);
         Intent intent=getIntent();
         Bundle bundle=intent.getExtras();
-        Log.v("tag","Top20 started");
-
         int from=1;
         int to=1;
         if(        bundle.containsKey(FROMKEY)){
@@ -39,23 +37,16 @@ public class Top1LevelWordsActivity extends AppCompatActivity {
         if(        bundle.containsKey(TOKEY)){
             to=bundle.getInt(TOKEY);
         }
-
-
-
         mRecyclerView= (GridView) findViewById(R.id.top20WordsRyclerView);
         Resources resources=getResources();
-
         AdapterView1LevelGrid adapterView1Level =new AdapterView1LevelGrid(this,resources,from,to);
-
-
         mRecyclerView.setAdapter(adapterView1Level);
     }
+
     public void toNext(View view){
        Intent intent=new Intent(this,WordActivity.class);
         String word=((Button)view).getText().toString();
         intent.putExtra(WordActivity.WORDKEY,word);
         startActivity(intent);
-
     }
-
 }

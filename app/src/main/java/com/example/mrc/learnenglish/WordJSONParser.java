@@ -39,8 +39,6 @@ public class WordJSONParser {
                     word.setSecond_false(object.getInt("second_false"));
                 }
 
-              //  word.setRussianTranslation(object.getString("russianTranslation"));
-             //     word.setUkraineTranslation(object.getString("ukraineTranslation"));
                 result.add(word);
 
             }
@@ -94,9 +92,6 @@ public class WordJSONParser {
                 if(object.optInt("second_false")!=0){
                     word.second_false=(object.getInt("second_false"));
                 }
-
-                //  word.setRussianTranslation(object.getString("russianTranslation"));
-                //     word.setUkraineTranslation(object.getString("ukraineTranslation"));
                 result.add(word);
 
             }

@@ -17,18 +17,18 @@ import io.realm.RealmResults;
 
 
 public class TestGenerator {
-
-
-
     private int id;
+
     private String word;
 
     public int getId(){
         return id;
     }
+
     public void setId(int id){
         this.id=id;
     }
+
   public  static Random random = new Random();
 
     public String getWord() {
@@ -40,13 +40,8 @@ public class TestGenerator {
     }
 
     private String[] posibleAnswer=new String[3];
+
     private int correctAnswer;
-
-
-
-
-
-
 
     public String[] getPosibleAnswer() {
         return posibleAnswer;

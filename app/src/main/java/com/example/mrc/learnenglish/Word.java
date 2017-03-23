@@ -44,7 +44,6 @@ public class Word extends RealmObject  implements Serializable{
 
     private int second_false;
 
-
     public String getRussianTranslation() {
         return russianTranslation;
     }
@@ -97,20 +96,8 @@ public class Word extends RealmObject  implements Serializable{
         posibleAnswer[thirdPos]=LearnNewWordsActivity.getFirstTwoTranslation(Data.getTranslationById(word.getSecond_false(),context));
         result.setPosibleAnswer(posibleAnswer);
 
-
-
-
-
-
-
-
-
         return result;
     }
-
-
-
-
 
     public String getWord() {
         return word;
@@ -130,11 +117,4 @@ public class Word extends RealmObject  implements Serializable{
         return "";
 
         }
-
-
-
-
-
-
-
 }

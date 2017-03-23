@@ -33,13 +33,11 @@ public enum LANGUAGE {
     }
     private static final String APP_PREFERENCES = "mysettings";
     private static final String LANGUAGE_VAR="LANGUAGE";
-    private static final String TAG="selectLanguage";
 
     public static void saveLanguage(LANGUAGE language,Context context ){
         SharedPreferences mySharedPreferences = context.getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor= mySharedPreferences.edit();
         editor.putString(LANGUAGE_VAR,language.toString());
-        Log.v("current language",language.toString());
         editor.apply();
 
     }
@@ -49,7 +47,6 @@ public enum LANGUAGE {
         SharedPreferences mySharedPreferences = context.getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
         if(mySharedPreferences.contains(LANGUAGE_VAR)) {
             String language = mySharedPreferences.getString(LANGUAGE_VAR,"");
-            Log.v("current language when  ",language);
             return fromStringToLanguage(language);
         }
             return LANGUAGE.NONE;

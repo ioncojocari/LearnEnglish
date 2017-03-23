@@ -18,8 +18,6 @@ import io.realm.RealmConfiguration;
 public class MainActivity extends AppCompatActivity  {
     android.support.v7.widget.Toolbar toolbar;
     public static boolean languageChanged=false;
-
-
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Realm.init(this);
@@ -79,13 +77,11 @@ public class MainActivity extends AppCompatActivity  {
         Intent intent=new Intent(this,Search.class);
         startActivity(intent);
     }
-
     private void showSettings(){
         Intent intent=new Intent(this,ChooseLanguage.class);
         startActivity(intent);
     }
 
-    @Override
     protected void onResume() {
         super.onResume();
         if(languageChanged){
@@ -95,24 +91,15 @@ public class MainActivity extends AppCompatActivity  {
             toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar);
             setSupportActionBar(toolbar);
         }
-
-
-
         checkIfWordsExist();
     }
 
     public void checkIfLanguageChoosed(){
-
       LANGUAGE currentLanguage=  LANGUAGE.getCurrentLanguage(this);
-
         if(currentLanguage==LANGUAGE.NONE){
             Intent intent=new Intent(this,ChooseLanguage.class);
-
             startActivity(intent);
-
         }
-
-
     }
 
     public void checkIfWordsExist(){
@@ -122,7 +109,6 @@ public class MainActivity extends AppCompatActivity  {
         realm.commitTransaction();
         if(nr==0){
             Intent intent=new Intent(this,DecompileActivity.class);
-
             startActivity(intent);
         }
     }

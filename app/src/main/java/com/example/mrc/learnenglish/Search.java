@@ -59,9 +59,6 @@ public class Search extends AppCompatActivity {
                         lastSearch = word;
                         search(word);
                     }
-
-
-                @Override
                 public void afterTextChanged(Editable s) {
 
                 }
@@ -86,69 +83,45 @@ public class Search extends AppCompatActivity {
             if(!(editText!=null && lastSearch !=null  && word.equals(lastSearch))){
                 lastSearch=word;
                 search(word);
-                Log.v("trt","search ");
             }
-    //i need to check if word was changed then i should
     }
     public void search(String wordStr){
         ArrayList<Word> results=new ArrayList<Word>();
         if(wordStr!=null && !wordStr.isEmpty()) {
             Realm realm = Realm.getDefaultInstance();
             realm.beginTransaction();
-
             Word word = realm.where(Word.class).equalTo("word", wordStr).findFirst();
             if(word!=null){
                 results.add(word);
-
             }
             RealmResults<Word> resultSet=realm.where(Word.class).beginsWith("word",wordStr).findAll();
-
             if( !resultSet.isEmpty()) {
-
                 for (Word wordFromResultSet : resultSet) {
                     if ( !results.contains(wordFromResultSet)) {
                         results.add(wordFromResultSet);
                     }
                 }
-
             }
-
             RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycle_view);
             TextView textView = (TextView) findViewById(R.id.no_such_word_text_view);
-            Log.v("trt","----");
-            Log.v("trt","arrayList size before sorting :"+results.size());
            ArrayList<String> result=sortResult(results,wordStr);
-            Log.v("trt","arrayList size after sorting :"+results.size());
-            Log.v("trt","----");
                 if(result.isEmpty()){
                 recyclerView.setVisibility(View.INVISIBLE);
                 textView.setVisibility(View.VISIBLE);
             }else{
-
                 mLayoutManager = new LinearLayoutManager(this);
-
-
                 recyclerView.setVisibility(View.VISIBLE);
                 textView.setVisibility(View.INVISIBLE);
                 recyclerView.setLayoutManager(mLayoutManager);
                 SearchWordsAdapterView searchWordsAdapterView = new SearchWordsAdapterView(this, result);
                 recyclerView.setAdapter(searchWordsAdapterView);
             }
-
-
             realm.commitTransaction();
         }
     }
     public ArrayList<String> sortResult(ArrayList<Word> words , String word){
         ArrayList<String> results = new ArrayList<String>();
-
-
         if( word!=null  && words!=null  && !word.isEmpty()) {
-
-
-
-
-
                 int[][] fromPositionWordBegins = new int[words.size()][3];
                 for (int i = 0; i < words.size(); i++) {
                     fromPositionWordBegins[i][0] = i;
@@ -159,22 +132,19 @@ public class Search extends AppCompatActivity {
 
                 for (int i = 0; i < fromPositionWordBegins.length; i++) {
                     results.add(words.get(fromPositionWordBegins[i][0]).getWord());
-
                 }
-
-
-
-
             }
 
         return results;
     }
+
     public int fromWhereBeginsString(String wholeWord,String partOfWord){
         int result;
         result=wholeWord.indexOf(partOfWord);
 
         return result;
     }
+
     public void toNext(View view){
         Intent intent=new Intent(this,WordActivity.class);
         String word=((Button)view).getText().toString();
@@ -183,6 +153,7 @@ public class Search extends AppCompatActivity {
         startActivity(intent);
 
     }
+
     public int[][] sortIntArray(int[][] ints){
         int orderNr;
         int value;
@@ -208,15 +179,9 @@ public class Search extends AppCompatActivity {
         }else {
 
             for (int i = 0; i < maxAmountOfShowedWords; i++) {
-
                 result[i] = ints[i];
-
             }
             return result;
-
         }
-
-
     }
-
 }

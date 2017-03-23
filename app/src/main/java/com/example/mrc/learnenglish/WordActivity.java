@@ -38,24 +38,13 @@ public class WordActivity extends AppCompatActivity implements View.OnClickListe
             if (bundle.containsKey(WORDKEY)) {
                 wordStr = bundle.getString(WORDKEY);
                 getIntent().removeExtra(WORDKEY);
-
             }
-
             if(bundle.containsKey(SEARCHMODE)){
                 searchMode=bundle.getBoolean(SEARCHMODE);
             }
         }
-
-
-
-
         setContentView(R.layout.word_layout);
-
         setTranslation();
-
-
-
-
     }
     private void setTranslation(){
         toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar);
@@ -66,18 +55,13 @@ public class WordActivity extends AppCompatActivity implements View.OnClickListe
         nextButton.setOnClickListener(this);
         previousButton.setOnClickListener(this);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         Realm realm=Realm.getDefaultInstance();
         realm.beginTransaction();
         Word word=realm.where(Word.class).equalTo("word",wordStr).findFirst();
-
         realm.commitTransaction();
 
-
-
-
         String translationText=word.getTranslation(this);
-
-
         TextView wordTextView=(TextView)findViewById(R.id.wordTextView);
         wordTextView.setText(wordStr);
         TextView translationTextView=(TextView)findViewById(R.id.translationTextView);
@@ -97,17 +81,16 @@ public class WordActivity extends AppCompatActivity implements View.OnClickListe
         if(Data.getNr(id)==(Data.getData().size()-1)){
             result=true;
         }
-        Log.v("trt","isLastWOrd : "+result);
+
         return result;
     }
     public boolean isFirstWord( int id){
         boolean result=false;
-        Log.v("trt","data id "+ id);
-        Log.v("trt","data get Nr"+ Data.getNr(id));
+
         if(Data.getNr(id)==0){
             result=true;
         }
-        Log.v("trt","isFirstWOrd : "+result);
+
         return result;
     }
     public void checkNextOrPreviousWordExist(int id){
@@ -195,18 +178,11 @@ public class WordActivity extends AppCompatActivity implements View.OnClickListe
 
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.toolbar_menu, menu);
-
-
-
-
-        // Configure the search info and add any event listeners...
-
         return super.onCreateOptionsMenu(menu);
     }
 
     public void showSettings(){
         Intent intent=new Intent(this,ChooseLanguage.class);
-
         startActivity(intent);
     }
 
@@ -218,31 +194,19 @@ public class WordActivity extends AppCompatActivity implements View.OnClickListe
         }else if(v.getId()==R.id.goToPreviousWord){
             goToPreviousWord();
         }
-
     }
     public void goToNextWord(){
         int nr = Data.getNr(id) + 1;
         if(nr>0 && nr<Data.getData().size()) {
-
             String word = Data.getData().get(nr).getWord();
             wordStr = word;
             setTranslation();
         }
-//        Log.v("trt","id:"+id);
-//        int nr=Data.getNr(id) + 1;
-//        Log.v("trt","nr:"+nr);
-//        if(nr>0 && nr<Data.getData().size()) {
-//            Intent intent=new Intent(this,WordActivity.class);
-//            String word = Data.getData().get(nr).getWord();
-//            intent.putExtra(WordActivity.WORDKEY, word);
-//
-//            startActivity(intent);
-//        }
+
     }
     public void goToPreviousWord() {
         int nr = Data.getNr(id) - 1;
         if(nr>=0 && nr<Data.getData().size()) {
-
             String word = Data.getData().get(nr).getWord();
             wordStr = word;
             setTranslation();

@@ -22,7 +22,6 @@ public class LearnWordsActivity extends AppCompatActivity {
         //ask the words that wasn't correct if the nr of words that wasn't learned is more than 5
         //i will repeatly ask the unlearned words untill it will be less than 2
         //
-
 //        Realm realm=Realm.getDefaultInstance();
 //        realm.beginTransaction();
 //        RealmResults<UnlearnedWord> unlearnedWords=realm.where(UnlearnedWord.class).findAll();
@@ -78,8 +77,6 @@ public class LearnWordsActivity extends AppCompatActivity {
                     lastNr = Data.getNr(lastId);
                 }
             }
-
-
             if (unlearnedWords.size() < maxAmountOfUnknownWords && (learnedWords.size() + unlearnedWords.size()) != Data.getData().size()) {
                 learnNewWords(lastNr, amounOfNewWords);
             } else if (unlearnedWords.size() >= maxAmountOfUnknownWords) {
@@ -113,7 +110,6 @@ public class LearnWordsActivity extends AppCompatActivity {
         super.onBackPressed();
 
     }
-
     private   void learnNewWords(int lastLearnedId, int amounOfNewWords){
         Intent intent=new Intent(this,LearnNewWordsActivity.class);
         intent.putExtra(LearnNewWordsActivity.AMOUNTOFNEWWORDSKEY,amounOfNewWords);
